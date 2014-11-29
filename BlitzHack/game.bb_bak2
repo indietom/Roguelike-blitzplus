@@ -70,10 +70,14 @@ Function drawMap()
 			If readInfo = 1 Read mapC(x,y)  
 				For npc.npc = Each npc
 					If npc\x = x*16 And npc\y = y*16 Then
+						If mapC(x, y) <> 1 Then
+							npc\currentTile = map(x, y)
+							If npc\typeOf = king Then Print npc\currentTile
+						End If
 						mapC(x, y) = 1
 					End If
 					If npc\pastX = x*16 And npc\pastY = y*16 Then
-						mapC(x, y) = 0
+						mapC(x, y) = npc\currentTile
 					End If
 				Next	
 			

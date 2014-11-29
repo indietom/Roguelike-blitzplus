@@ -118,6 +118,16 @@ Function updatePlayer()
 			Next
 		End If
 		
+		For npc.npc = Each npc
+			If npc\x = player\x-32 And player\y = npc\y Then
+				Print "LEL"
+				player\cantMoveLeft = True 
+			End If
+			If npc\x <> player\x-32 And player\y <> npc\y Then
+				player\cantMoveLeft = False  
+			End If
+		Next
+		
 		If KeyHit(leftKey) And player\cantMoveLeft = False Then
 			player\direction = 3
 			player\x = player\x - g(1)

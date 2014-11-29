@@ -6,9 +6,6 @@ Type projectile
 	Field x#
 	Field y#
 	
-	Field renderX#
-	Field renderY#
-	
 	Field imx
 	Field imy
 	

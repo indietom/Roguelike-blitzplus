@@ -36,10 +36,6 @@ Const evilWizard = 7
 Const satan = 8
 Const viking = 9
 
-Const king = 0
-Const priest = 1
-Const merchant = 2
-
 Const leftKey = 203
 Const rightKey = 205
 Const upKey = 200
@@ -49,3 +45,4 @@ Global updateGame = False
 
 Global cameraX = 0
 Global cameraY = 0
+

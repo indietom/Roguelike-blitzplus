@@ -37,6 +37,8 @@ Function addNpc(x2, y2, typeOf2)
 	npc.npc = New npc
 	npc\x = x2
 	npc\y = y2
+	npc\pastX = x2
+	npc\pastY = y2
 	npc\typeOf = typeOf2
 	
 	npc\imx = frame(npc\typeOf)

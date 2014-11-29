@@ -118,6 +118,10 @@ Function updatePlayer()
 			Next
 		End If
 		
+		For npc.npc = Each npc
+			
+		Next
+		
 		If KeyHit(leftKey) And player\cantMoveLeft = False Then
 			player\direction = 3
 			player\x = player\x - g(1)

@@ -72,9 +72,6 @@ Function drawMap()
 					If npc\x = x*16 And npc\y = y*16 Then
 						mapC(x, y) = 1
 					End If
-					If npc\pastX = x*16 And npc\pastY = y*16 Then
-						mapC(x, y) = 0
-					End If
 				Next	
 			
 				For player.player = Each player
