@@ -45,7 +45,7 @@ Function addNpc(x2, y2, typeOf2)
 	
 	Select npc\typeOf
 		Case 0
-			npc\name = "King Karl the " + Rand(1, 3)
+			npc\name = "King Karl the " + toRoman(Rand(1, 11))
 			npc\dialog = "I am " + npc\name 
 		Case 1
 			npc\name = "Priest"
@@ -83,7 +83,6 @@ Function drawNpc()
 		DrawImageRect(spritesheet, npc\renderX, npc\renderY, npc\imx, npc\imy, 16, 16)
 	Next
 End Function 
-
 
 
 

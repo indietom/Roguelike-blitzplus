@@ -155,7 +155,7 @@ While Not KeyHit(1)
 		draw()
 		
 		update()
-		
+
 		DrawImageRect(spritesheet, MouseX(), MouseY(), 579, 1, 8, 8)
 		HidePointer()
 		

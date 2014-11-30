@@ -45,7 +45,7 @@ End Type
 
 Function updateEnemy()
 	For enemy.enemy = Each enemy
-	
+		
 	Next
 End Function
 

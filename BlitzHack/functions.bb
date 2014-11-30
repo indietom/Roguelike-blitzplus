@@ -28,4 +28,31 @@ Function g(cell)
 	Return g2
 End Function 
 
+Function toRoman$(num)
 
+	Local number$ = ""
+	
+	If num >= 10 Then
+		number = "X" + toRoman(num-10)
+		Return number
+	End If
+	If num >= 9 Then
+		number = "IX" + toRoman(num-9)
+		Return number
+	End If
+	If num >= 5 And killFunc = False Then
+		number = "V" + toRoman(num-5)
+		Return number
+	End If
+	If num >= 4 Then
+		number = "IV" + toRoman(num-4)
+		Return number
+	End If
+	If num >= 1 Then
+		number = "I" + toRoman(num-1)
+		Return number
+	End If
+	
+	Return number$
+	
+End Function 
