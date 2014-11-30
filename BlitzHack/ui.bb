@@ -44,6 +44,23 @@ Function drawUi()
 		Rect g((420)/16)-104, g((320-32)/16)-20, 4, 20
 		clearColor() 
 	Next
+	
+	drawNpcUi()
+	
+End Function 
+
+Function drawNpcUi()
+	For npc.npc = Each npc 
+		If npc\talking Then
+				Text 120, 240, npc\dialog
+				If KeyHit(useKey) Then
+					For player.player = Each player 
+						player\canMoveAtAll = True 
+					Next
+					npc\talking = False
+				End If
+			End If
+		Next
 End Function 
 
 Type eventText
@@ -267,7 +284,6 @@ Function updateInvBox()
 		End If
 	Next
 End Function 
-
 
 
 

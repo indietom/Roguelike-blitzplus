@@ -21,6 +21,7 @@ Type npc
 	Field name$
 	
 	Field dialog$
+	Field talking
 	
 	Field used
 	
@@ -45,10 +46,13 @@ Function addNpc(x2, y2, typeOf2)
 	Select npc\typeOf
 		Case 0
 			npc\name = "King Karl the " + Rand(1, 3)
+			npc\dialog = "I am " + npc\name 
 		Case 1
 			npc\name = "Priest"
+			npc\dialog = "I am a " + npc\name + " and I can heal you!"
 		Case 2
 			npc\name = "Merchant"
+			npc\dialog = "I am a " + npc\name + " what are you buying?"
 	End Select
 End Function 
 
@@ -79,6 +83,8 @@ Function drawNpc()
 		DrawImageRect(spritesheet, npc\renderX, npc\renderY, npc\imx, npc\imy, 16, 16)
 	Next
 End Function 
+
+
 
 
 

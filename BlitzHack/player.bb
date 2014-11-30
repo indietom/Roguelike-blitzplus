@@ -49,6 +49,8 @@ Type player
 	Field cantMoveUp
 	Field cantMoveDown
 	
+	Field canMoveAtAll
+	
 	Field destroy
 End Type
 
@@ -72,6 +74,8 @@ Function addPlayer(x2, y2, class2, tag2)
 	player\armorEquipment = 0
 	player\subArmorEquipment = 0
 	player\helmetEquipment = 0
+	
+	player\canMoveAtAll = True 
 	
 	Select player\class
 		Case archer
@@ -102,39 +106,76 @@ Function updatePlayer()
 		player\renderX = player\x - cameraX
 		player\renderY = player\y - cameraY
 		
-		If KeyHit(45) Then
-			For item.item = Each item
-				If player\x = item\x And player\y = item\y Then
-					If item\typeOf <> loot Then 
-						itemToAdd = item\typeOf
-						subItemToAdd = item\subTypeOf
-						storeItem = True
-					Else 
-						player\gold = player\gold + item\worth
-						
+		; You could have stopped it blitz
+		If player\canMoveAtAll Then
+			If KeyHit(useKey) Then
+				FlushKeys()
+				For item.item = Each item
+					If player\x = item\x And player\y = item\y Then
+						If item\typeOf <> loot Then 
+							itemToAdd = item\typeOf
+							subItemToAdd = item\subTypeOf
+							storeItem = True
+						Else 
+							player\gold = player\gold + item\worth
+							
+						End If
+						item\destroy = True 
 					End If
-					item\destroy = True 
+				Next
+			End If
+		End If
+		If player\canMoveAtAll Then 
+		If player\cantMoveLeft = False Then
+			If KeyHit(leftKey) Then
+				player\direction = 3
+				player\x = player\x - g(1)
+			End If 
+		End If
+		If player\cantMoveRight = False Then
+			If KeyHit(rightKey) Then 
+				player\direction = 4
+				player\x = player\x + g(1)
+			End If 
+		End If
+		If player\cantMoveUp = False Then
+			If KeyHit(upKey) Then
+				player\direction = 2
+				player\y = player\y - g(1)
+			End If
+		End If
+		If player\cantMoveDown = False Then
+			If KeyHit(downKey) Then 
+				player\direction = 1
+				player\y = player\y + g(1)
+			End If
+		End If
+		End If
+		
+		For npc.npc = Each npc
+			If player\x - 16 = npc\x And player\y = npc\y Then
+				If KeyHit(leftKey) Then
+					npc\talking = True
 				End If
-			Next
-		End If
-		
-		If KeyHit(leftKey) And player\cantMoveLeft = False Then
-			player\direction = 3
-			player\x = player\x - g(1)
-		End If
-		If KeyHit(rightKey) And player\cantMoveRight = False Then
-			player\direction = 4
-			player\x = player\x + g(1)
-		End If
-		If KeyHit(upKey) And player\cantMoveUp = False Then
-			player\direction = 2
-			player\y = player\y - g(1)
-		End If
-		If KeyHit(downKey) And player\cantMoveDown = False Then
-			player\direction = 1
-			player\y = player\y + g(1)
-		End If
-		
+			End If 
+			If player\x + 16 = npc\x And player\y = npc\y Then
+				If KeyHit(rightKey) Then
+					npc\talking = True
+				End If
+			End If 
+			If player\x = npc\x And player\y - 16 = npc\y Then
+				If KeyHit(downKey) Then
+					npc\talking = True
+				End If
+			End If 
+			If player\x = npc\x And player\y - 16 = npc\y Then
+				If KeyHit(upKey) Then
+					npc\talking = True
+				End If
+			End If 
+			If npc\talking Then player\canMoveAtAll = False 
+		Next 
+
 		If player\hp > 10 Then
 			player\hp = 10
 		End If

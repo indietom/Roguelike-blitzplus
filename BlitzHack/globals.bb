@@ -40,10 +40,11 @@ Const king = 0
 Const priest = 1
 Const merchant = 2
 
-Const leftKey = 203
-Const rightKey = 205
-Const upKey = 200
-Const downKey = 208
+Const leftKey = 30
+Const rightKey = 32
+Const upKey = 17
+Const downKey = 31
+Const useKey = 18
 
 Global updateGame = False 
 
