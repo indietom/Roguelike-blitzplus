@@ -118,8 +118,8 @@ Function updatePlayer()
 							storeItem = True
 						Else 
 							player\gold = player\gold + item\worth
+							
 						End If
-						updateGame = True
 						item\destroy = True 
 					End If
 				Next
@@ -130,28 +130,24 @@ Function updatePlayer()
 			If KeyHit(leftKey) Then
 				player\direction = 3
 				player\x = player\x - g(1)
-				updateGame = True
 			End If 
 		End If
 		If player\cantMoveRight = False Then
 			If KeyHit(rightKey) Then 
 				player\direction = 4
 				player\x = player\x + g(1)
-				updateGame = True
 			End If 
 		End If
 		If player\cantMoveUp = False Then
 			If KeyHit(upKey) Then
 				player\direction = 2
 				player\y = player\y - g(1)
-				updateGame = True
 			End If
 		End If
 		If player\cantMoveDown = False Then
 			If KeyHit(downKey) Then 
 				player\direction = 1
 				player\y = player\y + g(1)
-				updateGame = True
 			End If
 		End If
 		End If
@@ -160,25 +156,21 @@ Function updatePlayer()
 			If player\x - 16 = npc\x And player\y = npc\y Then
 				If KeyHit(leftKey) Then
 					npc\talking = True
-					updateGame = True
 				End If
 			End If 
 			If player\x + 16 = npc\x And player\y = npc\y Then
 				If KeyHit(rightKey) Then
 					npc\talking = True
-					updateGame = True
 				End If
 			End If 
 			If player\x = npc\x And player\y - 16 = npc\y Then
 				If KeyHit(downKey) Then
 					npc\talking = True
-					updateGame = True
 				End If
 			End If 
 			If player\x = npc\x And player\y - 16 = npc\y Then
 				If KeyHit(upKey) Then
 					npc\talking = True
-					updateGame = True
 				End If
 			End If 
 			If npc\talking Then player\canMoveAtAll = False 
@@ -212,6 +204,7 @@ Function playerEquipmentUi()
 		DrawImageRect(spritesheet, 250+1, (480-75+2*20)+1, frame(player\subArmorEquipment), frame(11 + player\armorEquipment) , 16, 16)
 	Next
 End Function 
+
 
 
 

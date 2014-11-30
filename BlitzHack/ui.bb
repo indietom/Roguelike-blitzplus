@@ -52,11 +52,6 @@ End Function
 Function drawNpcUi()
 	For npc.npc = Each npc 
 		If npc\talking Then
-				DrawImageRect(spritesheet, 120-1, 240-1, 595, 1, 9, 18)
-				For i = 0 To StringWidth(npc\dialog$)/3
-					DrawImageRect(spritesheet, 120-1+9+i*3, 240-1, 599, 1, 3, 18)
-				Next
-				DrawImageRect(spritesheet, 120-1+9+(StringWidth(npc\dialog$)/3)*3, 240-1, 604, 1, 9, 18)
 				Text 120, 240, npc\dialog
 				If KeyHit(useKey) Then
 					For player.player = Each player 
@@ -215,7 +210,6 @@ Function updateInvBox()
 						End If
 						invBox\typeOf = -1
 						invBox\subTypeOf = -1
-						updateGame = True
 					End If
 				Next
 			End If	
@@ -290,6 +284,7 @@ Function updateInvBox()
 		End If
 	Next
 End Function 
+
 
 
 
