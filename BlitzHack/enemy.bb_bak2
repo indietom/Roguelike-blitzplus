@@ -65,7 +65,7 @@ End Function
 
 Function drawEnemy()
 	For enemy.enemy = Each enemy
-		DrawImageRect(spritesheet, enemy\renderX, enemy\renderY, enemy\imx, enemy\imy, 16, 16)
+		DrawImageRect(spritesheet, 1, 1, enemy\imx, enemy\imy, 16, 16)
 	Next
 End Function 
 
