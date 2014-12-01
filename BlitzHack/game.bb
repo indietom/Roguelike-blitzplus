@@ -165,8 +165,6 @@ While Not KeyHit(1)
 		DrawImageRect(spritesheet, MouseX(), MouseY(), 579, 1, 8, 8)
 		HidePointer()
 		
-		Text 0, 0, updateGame
-		
 		updateGame = False 
 	Flip
 

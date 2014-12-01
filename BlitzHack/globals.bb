@@ -36,6 +36,18 @@ Const evilWizard = 7
 Const satan = 8
 Const viking = 9
 
+Dim enemyNames$(viking)
+enemyNames(0) = "Eye monster" 
+enemyNames(1) = "Minon" 
+enemyNames(2) = "Soldier"
+enemyNames(3) = "Snake"
+enemyNames(4) = "Bat"
+enemyNames(5) = "Skeleton"
+enemyNames(6) = "Prisoner"
+enemyNames(7) = "Evil Wizard"
+enemyNames(8) = "Satan"
+enemyNames(9) = "Viking"  
+
 Const king = 0
 Const priest = 1
 Const merchant = 2

@@ -68,27 +68,10 @@ Function addEnemy(x2, y2, typeOf2, level2)
 	enemy\imx = frame(enemy\typeOf)
 	enemy\imy = frame(1)
 	
+	enemy\name = enemyNames(enemy\typeOf)
+	
 	Select enemy\typeOf
-		Case eyeMonster
-			enemy\name = "Eye monster"
-		Case minion
-			enemy\name = "Minion"
-		Case soldier
-			enemy\name = "Soldier"
-		Case snake
-			enemy\name = "Snake"
-		Case bat
-			enemy\name = "bat"
-		Case skeleton
-			enemy\name = "Skeleton"
-		Case prisoner
-			enemy\name = "Prisoner"
-		Case evilWizard
-			enemy\name = "Evil Wizard"
-		Case satan
-			enemy\name = "Satan"
-		Case viking
-			enemy\name = "Viking" 
+		
 	End Select
 End Function  
 
@@ -112,7 +95,6 @@ Function drawEnemy()
 		DrawImageRect(spritesheet, enemy\renderX, enemy\renderY, enemy\imx, enemy\imy, 16, 16)
 	Next
 End Function 
-
 
 
 
