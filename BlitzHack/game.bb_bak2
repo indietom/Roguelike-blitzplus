@@ -150,6 +150,8 @@ End Function
 
 ini()
 
+addHitEffectText(320, 240, "LEL")
+
 While Not KeyHit(1)
 
 	Cls 

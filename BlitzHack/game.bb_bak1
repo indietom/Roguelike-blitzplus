@@ -156,7 +156,7 @@ While Not KeyHit(1)
 		WaitTimer(frametimer)
 		
 		draw()
-		
+		addHitEffectText(MouseX(), MouseY(), "LEL")
 		update()
 
 		DrawImageRect(spritesheet, MouseX(), MouseY(), 579, 1, 8, 8)

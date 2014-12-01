@@ -73,23 +73,8 @@ Function addEnemy(x2, y2, typeOf2, level2)
 			enemy\name = "Eye monster"
 		Case minion
 			enemy\name = "Minion"
-		Case soldier
-			enemy\name = "Soldier"
-		Case snake
-			enemy\name = "Snake"
-		Case bat
-			enemy\name = "bat"
-		Case skeleton
-			enemy\name = "Skeleton"
-		Case prisoner
-			enemy\name = "Prisoner"
-		Case evilWizard
-			enemy\name = "Evil Wizard"
-		Case satan
-			enemy\name = "Satan"
-		Case viking
-			enemy\name = "Viking" 
 	End Select
+	
 End Function  
 
 Function updateEnemy()
