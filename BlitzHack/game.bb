@@ -120,10 +120,12 @@ Function draw()
 	drawEnemy()
 	drawNpc()
 	
+	drawHitEffect()
+	drawHitEffectText()
+	
 	drawUi()
 	drawInvBox()
 	drawEvenText()
-	drawHitEffectText()
 End Function
 
 Function update()
@@ -135,6 +137,7 @@ Function update()
 	updateEnemy()
 	updateNpc()
 	updateHitEffectText()
+	updateHitEffect()
 End Function 
 
 Function ini()

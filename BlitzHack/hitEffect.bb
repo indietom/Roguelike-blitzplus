@@ -45,12 +45,12 @@ Function updateHitEffectText()
 			hitEffectText\destroy = True 
 		End If
 		
-		hitEffectText\g = hitEffectText\g + 10
-		hitEffectText\b = hitEffectText\b + 10
+		hitEffectText\g = hitEffectText\g + 6
+		hitEffectText\b = hitEffectText\b + 6
 	
 		hitEffectText\y = hitEffectText\y - hitEffectText\speed
 		
-		hitEffectText\speed = hitEffectText\speed + 0.5
+		hitEffectText\speed = hitEffectText\speed + 0.01
 		
 		hitEffectText\renderX = hitEffectText\x - cameraX
 		hitEffectText\renderY = hitEffectText\y - cameraY
@@ -82,65 +82,82 @@ Function addHitEffect(x2, y2)
 	hitEffect\maxLifeTime = 16
 End Function 
 
-Function updatHitEffect()
+Function updateHitEffect()
+	For hitEffect.hitEffect = Each hitEffect
+		hitEffect\lifeTime = hitEffect\lifeTime + 1
+		If hitEffect\lifeTime >= hitEffect\maxLifeTime Then
+			hitEffect\destroy = True 		
+		End If
+		
+		hitEffect\renderX = hitEffect\x - cameraX
+		hitEffect\renderY = hitEffect\y - cameraY
+		
+		If hitEffect\destroy Then
+			Delete hitEffect
+		End If
+	Next
+End Function  		
+
+Function drawHitEffect()
+	For hitEffect.hitEffect = Each hitEffect 
+		DrawImageRect(spritesheet, hitEffect\renderX, hitEffect\renderY, 528, 1, 16, 16)
+	Next 
+End Function 
+
+Function addAllHitEffects(x2#, y2#, infoText2$)
+	addHitEffectText(x2#+4, y2#, infoText2$)
+	addHitEffect(x2#, y2#)	
+End Function 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
-End Function  	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 		
 		
 		
 		
 		
 		
-
 
 
 
