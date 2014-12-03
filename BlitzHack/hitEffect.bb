@@ -50,7 +50,7 @@ Function updateHitEffectText()
 	
 		hitEffectText\y = hitEffectText\y - hitEffectText\speed
 		
-		hitEffectText\speed = hitEffectText\speed + 0.01
+		hitEffectText\speed = hitEffectText\speed + 0.1
 		
 		hitEffectText\renderX = hitEffectText\x - cameraX
 		hitEffectText\renderY = hitEffectText\y - cameraY
@@ -79,7 +79,7 @@ Function addHitEffect(x2, y2)
 	hitEffect\x = x2
 	hitEffect\y = y2
 	
-	hitEffect\maxLifeTime = 16
+	hitEffect\maxLifeTime = 16/2
 End Function 
 
 Function updateHitEffect()
@@ -158,7 +158,6 @@ End Function
 		
 		
 		
-
 
 
 

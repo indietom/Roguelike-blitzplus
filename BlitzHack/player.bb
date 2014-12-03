@@ -2,6 +2,7 @@ Include "globals.bb"
 Include "functions.bb"
 Include "item.bb"
 Include "npc.bb"
+Include "hitEffect.bb"
 
 Type player
 	Field x
@@ -41,6 +42,8 @@ Type player
 	
 	Field mana
 	Field hp
+	
+	Field hurt 
 	
 	Field direction
 	
@@ -158,25 +161,25 @@ Function updatePlayer()
 		
 		For npc.npc = Each npc
 			If player\x - 16 = npc\x And player\y = npc\y Then
-				If KeyHit(leftKey) Then
+				If KeyHit(leftKey) And npc\used = False Then
 					npc\talking = True
 					updateGame = True
 				End If
 			End If 
 			If player\x + 16 = npc\x And player\y = npc\y Then
-				If KeyHit(rightKey) Then
+				If KeyHit(rightKey) And npc\used = False Then
 					npc\talking = True
 					updateGame = True
 				End If
 			End If 
 			If player\x = npc\x And player\y - 16 = npc\y Then
-				If KeyHit(downKey) Then
+				If KeyHit(downKey) And npc\used = False Then
 					npc\talking = True
 					updateGame = True
 				End If
 			End If 
 			If player\x = npc\x And player\y - 16 = npc\y Then
-				If KeyHit(upKey) Then
+				If KeyHit(upKey) And npc\used = False Then
 					npc\talking = True
 					updateGame = True
 				End If
@@ -190,6 +193,11 @@ Function updatePlayer()
 		
 		player\dm = player\subHandEquipment + player\baseDm + 1
 		player\def = player\subArmorEquipment+player\helmetEquipment + player\baseDef + 1
+		
+		If player\hurt Then 
+			addAllHitEffects(player\x, player\y, 3)
+			player\hurt = False 
+		End If
 		
 		cameraX = player\x - 416/2
 		cameraY = player\y - 288/2	
@@ -212,9 +220,6 @@ Function playerEquipmentUi()
 		DrawImageRect(spritesheet, 250+1, (480-75+2*20)+1, frame(player\subArmorEquipment), frame(11 + player\armorEquipment) , 16, 16)
 	Next
 End Function 
-
-
-
 
 
 

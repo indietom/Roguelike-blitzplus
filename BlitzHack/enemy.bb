@@ -38,6 +38,8 @@ Type enemy
 	
 	Field chanceOfAttack
 	
+	Field hitDelay
+	
 	Field hurt
 	
 	Field active
@@ -70,6 +72,8 @@ Function addEnemy(x2, y2, typeOf2, level2)
 	
 	enemy\name = enemyNames(enemy\typeOf)
 	
+	enemy\dm = 3
+	
 	Select enemy\typeOf
 		
 	End Select
@@ -81,8 +85,33 @@ Function updateEnemy()
 		enemy\renderY = enemy\y - cameraY
 		
 		For player.player = Each player
+			If player\x - 16 = enemy\x And player\y = enemy\y And updateGame Then
+				enemy\chanceOfAttack = Rand(7)
+			End If
+			If player\x + 16 = enemy\x And player\y = enemy\y And updateGame Then
+				enemy\chanceOfAttack = Rand(7)
+			End If
+			If player\x = enemy\x And player\y - 16 = enemy\y And updateGame Then
+				enemy\chanceOfAttack = Rand(7)
+			End If
+			If player\x = enemy\x And player\y + 16 = enemy\y And updateGame Then
+				enemy\chanceOfAttack = Rand(7)
+			End If
 			
+			If enemy\chanceOfAttack = 3 And enemy\hitDelay <= 0 Then
+				player\hurt = True 
+				player\hp = player\hp - Rand(enemy\dm)
+				enemy\chanceOfAttack = 0
+				enemy\hitDelay = 1
+			End If
 		Next
+		
+		If enemy\hitDelay >= 1 And updateGame Then
+			enemy\hitDelay = enemy\hitDelay + 1
+		End If
+		If enemy\hitDelay >= 3 Then
+			enemy\hitDelay = 0
+		End If
 		
 		If enemy\destroy Then
 			Delete enemy
@@ -93,11 +122,10 @@ End Function
 Function drawEnemy()
 	For enemy.enemy = Each enemy
 		DrawImageRect(spritesheet, enemy\renderX, enemy\renderY, enemy\imx, enemy\imy, 16, 16)
+		Text enemy\renderX, enemy\renderY, enemy\hitDelay
+		Text enemy\renderX+16, enemy\renderY+15, enemy\chanceOfAttack
 	Next
 End Function 
-
-
-
 
 
 

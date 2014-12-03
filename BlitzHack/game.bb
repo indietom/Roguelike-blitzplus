@@ -15,6 +15,8 @@ SeedRnd MilliSecs()
 Global frametimer=CreateTimer(60)
 Global starttime=MilliSecs(),elapsedtime,fpscounter,curfps
 
+Global updateGameDelay
+
 Global readInfo = 1
 
 Dim map(10, 10)
@@ -165,7 +167,12 @@ While Not KeyHit(1)
 		DrawImageRect(spritesheet, MouseX(), MouseY(), 579, 1, 8, 8)
 		HidePointer()
 		
+		If KeyDown(5) Then
+			Text 0, 0, updateGame
+		End If
+		
 		updateGame = False 
+		
 	Flip
 
 Wend

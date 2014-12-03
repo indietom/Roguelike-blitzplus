@@ -52,15 +52,25 @@ End Function
 Function drawNpcUi()
 	For npc.npc = Each npc 
 		If npc\talking Then
-				DrawImageRect(spritesheet, 120-1, 240-1, 595, 1, 9, 18)
+				Local textX = 630 - StringWidth(npc\dialog$) - 10
+				DrawImageRect(spritesheet, textX, 240-1, 595, 1, 9, 18)
 				For i = 0 To StringWidth(npc\dialog$)/3
-					DrawImageRect(spritesheet, 120-1+9+i*3, 240-1, 599, 1, 3, 18)
+					DrawImageRect(spritesheet, textX-1+9+i*3, 240-1, 599, 1, 3, 18)
 				Next
-				DrawImageRect(spritesheet, 120-1+9+(StringWidth(npc\dialog$)/3)*3, 240-1, 604, 1, 9, 18)
-				Text 120, 240, npc\dialog
+				DrawImageRect(spritesheet, textX-1+9+(StringWidth(npc\dialog$)/3)*3, 240-1, 604, 1, 9, 18)
+				Text textX, 240, npc\dialog
 				If KeyHit(useKey) Then
+					If npc\typeOf <> merchant Then 
+						npc\used = True 
+					End If 
 					For player.player = Each player 
 						player\canMoveAtAll = True 
+						If npc\typeOf = priest Then
+							player\hp = 10
+						End If
+						If npc\typeOf = king Then
+							player\gold = player\gold + 50
+						End If
 					Next
 					npc\talking = False
 				End If
@@ -290,7 +300,6 @@ Function updateInvBox()
 		End If
 	Next
 End Function 
-
 
 
 
