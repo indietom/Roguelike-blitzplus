@@ -22,6 +22,8 @@ Type enemy
 	Field acc
 	Field def
 	
+	Field randDm
+	
 	Field baseDm
 	Field baseAcc
 	Field baseDef
@@ -100,7 +102,9 @@ Function updateEnemy()
 			
 			If enemy\chanceOfAttack = 3 And enemy\hitDelay <= 0 Then
 				player\hurt = True 
-				player\hp = player\hp - Rand(enemy\dm)
+				enemy\randDm = Rand(enemy\dm)
+				player\hp = player\hp - enemy\randDm
+				player\dmTaken = enemy\randDm
 				enemy\chanceOfAttack = 0
 				enemy\hitDelay = 1
 			End If

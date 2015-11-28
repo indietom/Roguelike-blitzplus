@@ -29,9 +29,7 @@ Function g(cell)
 End Function 
 
 Function toRoman$(num)
-
 	Local number$ = ""
-	
 	If num >= 10 Then
 		number = "X" + toRoman(num-10)
 		Return number
@@ -52,7 +50,60 @@ Function toRoman$(num)
 		number = "I" + toRoman(num-1)
 		Return number
 	End If
-	
 	Return number$
-	
 End Function 
+
+Function distanceTo#(x1#, x2#, y1#, y2#)
+	Local distance#
+	distance# = Sqr((x1-x2)^2 + (y1-y2)^2)
+	Return distance 
+End Function 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

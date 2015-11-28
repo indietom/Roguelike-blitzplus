@@ -44,6 +44,7 @@ Type player
 	Field hp
 	
 	Field hurt 
+	Field dmTaken
 	
 	Field direction
 	
@@ -172,7 +173,7 @@ Function updatePlayer()
 					updateGame = True
 				End If
 			End If 
-			If player\x = npc\x And player\y - 16 = npc\y Then
+			If player\x = npc\x And player\y + 16 = npc\y Then 
 				If KeyHit(downKey) And npc\used = False Then
 					npc\talking = True
 					updateGame = True
@@ -207,6 +208,7 @@ End Function
 Function drawPlayer()
 	For player.player = Each player
 		DrawImageRect(spritesheet, player\renderX, player\renderY, player\imx, player\imy, 16, 16)
+		Text 0, 0, player\cantMoveDown
 	Next
 End Function
 

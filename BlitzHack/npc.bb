@@ -65,13 +65,6 @@ Function updateNpc()
 			npc\moved = False
 		End If
 		
-		If KeyHit(2) Then
-			npc\moved = True
-			npc\pastX = npc\x
-			npc\pastY = npc\y
-			npc\x = npc\x + g(1)
-		End If
-		
 		If npc\destroy Then
 			Delete npc
 		End If
@@ -83,7 +76,6 @@ Function drawNpc()
 		DrawImageRect(spritesheet, npc\renderX, npc\renderY, npc\imx, npc\imy, 16, 16)
 	Next
 End Function 
-
 
 
 
